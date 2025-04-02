@@ -24,10 +24,10 @@
         <?php
             echo "<h1><b>MDC utilizando o método de Euclides(Método das divisões sucessivas).</b></h1>";
             $aux = 1;
-            while($num2 != 0){
-                $aux = $num2;
-                $num2 = $num1 / $num2;
-                $num1 = $aux;
+            while(($num1 % $num2)> 0){
+                $aux = $num1 % $num2;
+                $num1 = $num2;
+                $num2 = $aux;
             }
             echo $num2;
         ?>
