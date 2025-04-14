@@ -1,6 +1,9 @@
 <?php
     include 'dados.php';
-
+    function cmp($a, $b){
+        return $a['nome'] > $b['nome'];
+    }
+    usort($dados, 'cmp');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,18 +14,19 @@
     <title>Todos</title>
 </head>
 <body>
-    <header>
-        <div class="container">
+<header>
+        <div class="container-fluid">
         <nav class="w-auto p-1" style="background-color: #312d2d;">
             <a class="navbar-brand" href="index.html">
                 <b><p style="color:white;">INICIO</p></b>
             </a>
         </nav>
         <div class="jumbotron bg-light jumbotron-fluid">
-            <div class="container">
+            <div class="container-fluid">
               <h1 class="display-4 text-center py-4">Manipulação com array</h1>
              <p class="lead text-center py-4">Manipule seu array!!.</p>
             </div>
+        </div>
         </div>
     </header>
     <main role="main">
