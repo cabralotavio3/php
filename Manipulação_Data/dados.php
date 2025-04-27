@@ -1,72 +1,59 @@
-<?php
-    $data = $_POST['data'];
+<?php 
+
+    $nome = $_POST["nome"];
+    $data = $_POST["data"];
     
-    function calculaIdade( $dataNascimento ){
-        $hoje = new DateTime();
-        $diff = $hoje-> diff ( new DateTime( $dataNascimento));
-        return $diff->y;
- }
-    $data = calculaIdade($data);
-    $datab = calculaIdade($datab);
-    $datac = calculaIdade($datac);
-    $datad = calculaIdade($datad);
+    $lista = $nome . $data;
 
-    $dados[] = array('nome' => $_POST['nome'], 'idade' => $data);
-
-    function cmp($a, $b){
-        return $a['idade'] < $b['idade'];
+    $lista = str_replace(" ", "", $lista);
+    $lista = str_replace("-", "", $lista);
+    
+    function CreatePassword($str){
+        return substr(str_shuffle($str), 0, 8);
     }
-    usort($dados, 'cmp');
+
 ?>
 
- <!DOCTYPE html>
- <html lang="en">
- <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resposta ao formulario</title>
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
- </head>
- <body>
-    <div class="container">
-        <nav class="navbar navbar - light bg - light ">
-        <a class ="navbar-brand " href =" #" >
-        <img src=" imagem/logo.svg" width =" 30 " height =" 30 " alt=" ">
-        </a>
-        </nav>
-    </div>
-    <div class="container">
-        <div class="jumbotron">
-            <p class="h2 text-center py-4">EXIBINDO IDADES EM ORDEM DECRESCENTE</p>
-        </div>
-    </div>
-    <main role="main">
-        <div class="container">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                <th scope="col">Nome</th>
-                <th scope="col">Idade</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                        foreach( $dados as $linha => $item ):?>
-                            <th scope="row"><?php echo $item['nome']?></th>
-                            <td><?php echo $item['idade']?></td>
-                            </tr>
-                    <?php endforeach;?>
-            </tbody>
-        </table>
-    </div>
-    <div class="container">
-                <div class="row">
-                    <a class="btn btn-primary" href="formulario.html">Novo Cálculo</a>
-                </div>
-            </div>    
-    </div>
-</body> 
-</main>
- </html>
+<!DOCTYPE html>
+<html lang="en">
 
-    
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Escolha uma opção:</h1>
+
+  </div>
+
+  <div class="container">
+
+    <form action="signo.php" method="post">
+
+    <?php for($j=0; $j<5; $j++): ?>
+        <?php $senha = CreatePassword($lista);?>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" value="<?php echo $senha;?>" id="botao1">
+            <label class="form-check-label" for="botao1">
+                <?php echo $senha;?>
+            </label>
+        </div>
+    <?php endfor ?>
+
+        <input type="hidden" name="data" value="<?php echo $data ?>">
+        <input type="hidden" name="nome" value="<?php echo $nome ?>">
+
+        <div class="form-group">
+            <button class="btn btn-primary py-2" type="submit">Enviar</button>
+        </div>
+    </form>
+  </div>
+
+</body>
+
+</html>

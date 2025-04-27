@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+</head>
+
+<body>
+  <h1>Informe seu nome e data de nascimento</h1>
+
+  <div class="container">
+    <form action="senhas.php" method="post">
+
+      <div class="row py-3">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="nome">Nome:</label>
+            <input type="text" class="form-control col-sm" name="nome" placeholder="Digite o nome" required>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="data">Data de nascimento:</label>
+            <input type="date" class="form-control" name="data"
+required>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit">Enviar</button>
+      </div>
+    </form>
+  </div>
+
+</body>
+
+</html>
